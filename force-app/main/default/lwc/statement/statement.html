@@ -1,0 +1,68 @@
+<template>
+
+
+    <div class="slds-modal__header">
+        <h1 class="slds-modal__title slds-hyphenate">Statement</h1>
+    </div>
+
+
+    <div class="slds-modal__content slds-p-around_medium">
+        <lightning-input type="date" name="start" label="Start Date" onchange={startDateChange}></lightning-input>
+        <lightning-input type="date" name="end" label="Start Date" onchange={endDateChange}></lightning-input>
+
+
+        <div style="padding: 10px;">
+            <lightning-button variant="brand" label="Show Statement" title="Primary action" onclick={handleClick}
+                class="slds-m-left_x-small"></lightning-button>
+        </div>
+
+
+        <div style="height: 200px;" if:true={tableView}>
+            <lightning-datatable key-field="id" data={data} columns={columns} hide-checkbox-column="true">
+            </lightning-datatable>
+        </div>
+
+
+        <div class="slds-p-around_medium lgc-bg-inverse">
+            <p>Do you want download data as a CSV format, Click Here &nbsp;
+                <lightning-button icon-name="utility:download" label="Download as CSV" title="Download CSV File"
+                    onclick={downloadCSVFile} variant="brand"></lightning-button>
+            </p>
+        </div>
+        <div class="slds-p-around_medium lgc-bg-inverse">
+            <p>Do you want download data as a PDF format, Click Here &nbsp;
+                <lightning-button icon-name="utility:download" label="Download as PDF" title="Download PDF File"
+                    onclick={downloadPDFFile} variant="brand"></lightning-button>
+            </p>
+        </div>
+
+
+        <div class="slds-p-around_medium lgc-bg-inverse">
+            <p>Do you want to Send PDF Data In Your Email, Click Here &nbsp;
+                <lightning-button icon-name="utility:email" label="Send Mail" title="Send PDF File"
+                    onclick={mailPDFFile} variant="brand"></lightning-button>
+            </p>
+        </div>
+
+
+    </div>
+
+
+    <div class="slds-modal__footer slds-p-around_medium">
+        <p>{startingRecord} to {endingRecord} of {totalRecordCount}. page{page} of
+            {totalPage}</p>
+        <lightning-layout>
+            <lightning-layout-item>
+                <lightning-button label="Previous" icon-name="utility:chevronleft" onclick={handlePrevious}>
+                </lightning-button>
+            </lightning-layout-item>
+            <lightning-layout-item flexibility="grow"></lightning-layout-item>
+            <lightning-layout-item>
+                <lightning-button label="Next" icon-name="utility:chevronright" onclick={handleNext}>
+                </lightning-button>
+            </lightning-layout-item>
+        </lightning-layout>
+    </div>
+
+
+</template>

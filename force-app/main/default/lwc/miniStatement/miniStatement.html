@@ -1,0 +1,23 @@
+<template>
+    
+
+    <div class="slds-modal__header">
+        <h1 class="slds-modal__title slds-hyphenate">Mini Statement</h1>
+    </div>
+    <div class="slds-modal__content slds-p-around_medium">
+        <strong>Transaction Entry</strong>
+
+
+        <lightning-combobox label="Select No Of Record To Display" value={value} placeholder={value} options={options}
+            onchange={handleChange}></lightning-combobox>
+
+
+
+
+        <div style="height: 300px;" if:true={tableView}>
+            <lightning-datatable key-field="id" data={data} columns={columns} onrowaction={navigateToRecordViewPage}
+                hide-checkbox-column="true">
+            </lightning-datatable>
+        </div>
+    </div>
+</template>
